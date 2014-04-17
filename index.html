@@ -1,0 +1,189 @@
+<html>
+<head>
+    <title>Flexplorer</title>
+    <link rel="icon" href="/flexplorer/flexfavicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <script>
+/**
+ * StyleFix 1.0.3 & PrefixFree 1.0.7
+ * @author Lea Verou
+ * MIT license
+ */
+(function(){function j(a,c){return[].slice.call((c||document).querySelectorAll(a))}if(window.addEventListener){var g=window.StyleFix={link:function(a){try{if("stylesheet"!==a.rel||a.hasAttribute("data-noprefix"))return}catch(c){return}var i=a.href||a.getAttribute("data-href"),f=i.replace(/[^\/]+$/,""),j=(/^[a-z]{3,10}:/.exec(f)||[""])[0],k=(/^[a-z]{3,10}:\/\/[^\/]+/.exec(f)||[""])[0],h=/^([^?]*)\??/.exec(i)[1],n=a.parentNode,e=new XMLHttpRequest,b;e.onreadystatechange=function(){4===e.readyState&&
+b()};b=function(){var c=e.responseText;if(c&&a.parentNode&&(!e.status||400>e.status||600<e.status)){c=g.fix(c,!0,a);if(f)var c=c.replace(/url\(\s*?((?:"|')?)(.+?)\1\s*?\)/gi,function(a,c,b){return/^([a-z]{3,10}:|#)/i.test(b)?a:/^\/\//.test(b)?'url("'+j+b+'")':/^\//.test(b)?'url("'+k+b+'")':/^\?/.test(b)?'url("'+h+b+'")':'url("'+f+b+'")'}),b=f.replace(/([\\\^\$*+[\]?{}.=!:(|)])/g,"\\$1"),c=c.replace(RegExp("\\b(behavior:\\s*?url\\('?\"?)"+b,"gi"),"$1");b=document.createElement("style");b.textContent=
+c;b.media=a.media;b.disabled=a.disabled;b.setAttribute("data-href",a.getAttribute("href"));n.insertBefore(b,a);n.removeChild(a);b.media=a.media}};try{e.open("GET",i),e.send(null)}catch(r){"undefined"!=typeof XDomainRequest&&(e=new XDomainRequest,e.onerror=e.onprogress=function(){},e.onload=b,e.open("GET",i),e.send(null))}a.setAttribute("data-inprogress","")},styleElement:function(a){if(!a.hasAttribute("data-noprefix")){var c=a.disabled;a.textContent=g.fix(a.textContent,!0,a);a.disabled=c}},styleAttribute:function(a){var c=
+a.getAttribute("style"),c=g.fix(c,!1,a);a.setAttribute("style",c)},process:function(){j('link[rel="stylesheet"]:not([data-inprogress])').forEach(StyleFix.link);j("style").forEach(StyleFix.styleElement);j("[style]").forEach(StyleFix.styleAttribute)},register:function(a,c){(g.fixers=g.fixers||[]).splice(void 0===c?g.fixers.length:c,0,a)},fix:function(a,c,i){for(var f=0;f<g.fixers.length;f++)a=g.fixers[f](a,c,i)||a;return a},camelCase:function(a){return a.replace(/-([a-z])/g,function(a,g){return g.toUpperCase()}).replace("-",
+"")},deCamelCase:function(a){return a.replace(/[A-Z]/g,function(a){return"-"+a.toLowerCase()})}};setTimeout(function(){j('link[rel="stylesheet"]').forEach(StyleFix.link)},10);document.addEventListener("DOMContentLoaded",StyleFix.process,!1)}})();
+(function(j){function g(d,b,c,e,f){d=a[d];d.length&&(d=RegExp(b+"("+d.join("|")+")"+c,"gi"),f=f.replace(d,e));return f}if(window.StyleFix&&window.getComputedStyle){var a=window.PrefixFree={prefixCSS:function(d,b){var c=a.prefix;-1<a.functions.indexOf("linear-gradient")&&(d=d.replace(/(\s|:|,)(repeating-)?linear-gradient\(\s*(-?\d*\.?\d*)deg/ig,function(a,d,b,c){return d+(b||"")+"linear-gradient("+(90-c)+"deg"}));d=g("functions","(\\s|:|,)","\\s*\\(","$1"+c+"$2(",d);d=g("keywords","(\\s|:)","(\\s|;|\\}|$)",
+"$1"+c+"$2$3",d);d=g("properties","(^|\\{|\\s|;)","\\s*:","$1"+c+"$2:",d);if(a.properties.length)var e=RegExp("\\b("+a.properties.join("|")+")(?!:)","gi"),d=g("valueProperties","\\b",":(.+?);",function(a){return a.replace(e,c+"$1")},d);b&&(d=g("selectors","","\\b",a.prefixSelector,d),d=g("atrules","@","\\b","@"+c+"$1",d));d=d.replace(RegExp("-"+c,"g"),"-");return d=d.replace(/-\*-(?=[a-z]+)/gi,a.prefix)},property:function(d){return(a.properties.indexOf(d)?a.prefix:"")+d},value:function(d){d=g("functions",
+"(^|\\s|,)","\\s*\\(","$1"+a.prefix+"$2(",d);return d=g("keywords","(^|\\s)","(\\s|$)","$1"+a.prefix+"$2$3",d)},prefixSelector:function(d){return d.replace(/^:{1,2}/,function(d){return d+a.prefix})},prefixProperty:function(d,b){var c=a.prefix+d;return b?StyleFix.camelCase(c):c}},c={},i=[],f=getComputedStyle(document.documentElement,null),p=document.createElement("div").style,k=function(a){if("-"===a.charAt(0)){i.push(a);var a=a.split("-"),b=a[1];for(c[b]=++c[b]||1;3<a.length;)a.pop(),b=a.join("-"),
+StyleFix.camelCase(b)in p&&-1===i.indexOf(b)&&i.push(b)}};if(0<f.length)for(var h=0;h<f.length;h++)k(f[h]);else for(var n in f)k(StyleFix.deCamelCase(n));var h=0,e,b;for(b in c)f=c[b],h<f&&(e=b,h=f);a.prefix="-"+e+"-";a.Prefix=StyleFix.camelCase(a.prefix);a.properties=[];for(h=0;h<i.length;h++)n=i[h],0===n.indexOf(a.prefix)&&(e=n.slice(a.prefix.length),StyleFix.camelCase(e)in p||a.properties.push(e));"Ms"==a.Prefix&&(!("transform"in p)&&!("MsTransform"in p)&&"msTransform"in p)&&a.properties.push("transform",
+"transform-origin");a.properties.sort();e=function(a,b){r[b]="";r[b]=a;return!!r[b]};b={"linear-gradient":{property:"backgroundImage",params:"red, teal"},calc:{property:"width",params:"1px + 5%"},element:{property:"backgroundImage",params:"#foo"},"cross-fade":{property:"backgroundImage",params:"url(a.png), url(b.png), 50%"}};b["repeating-linear-gradient"]=b["repeating-radial-gradient"]=b["radial-gradient"]=b["linear-gradient"];h={initial:"color","zoom-in":"cursor","zoom-out":"cursor",box:"display",
+flexbox:"display","inline-flexbox":"display",flex:"display","inline-flex":"display"};a.functions=[];a.keywords=[];var r=document.createElement("div").style,l;for(l in b)k=b[l],f=k.property,k=l+"("+k.params+")",!e(k,f)&&e(a.prefix+k,f)&&a.functions.push(l);for(var m in h)f=h[m],!e(m,f)&&e(a.prefix+m,f)&&a.keywords.push(m);l=function(a){s.textContent=a+"{}";return!!s.sheet.cssRules.length};m={":read-only":null,":read-write":null,":any-link":null,"::selection":null};e={keyframes:"name",viewport:null,
+document:'regexp(".")'};a.selectors=[];a.atrules=[];var s=j.appendChild(document.createElement("style")),q;for(q in m)b=q+(m[q]?"("+m[q]+")":""),!l(b)&&l(a.prefixSelector(b))&&a.selectors.push(q);for(var t in e)b=t+" "+(e[t]||""),!l("@"+b)&&l("@"+a.prefix+b)&&a.atrules.push(t);j.removeChild(s);a.valueProperties=["transition","transition-property"];j.className+=" "+a.prefix;StyleFix.register(a.prefixCSS)}})(document.documentElement);    </script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/modernizr.2.6.2.flexbox.min.js"></script> -->
+    <meta name="description" content="Dive in to and explore the wonders of the CSS3 Flexible Box model." />
+</head>
+<body>
+
+<section class="flex">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar flex">
+        <hgroup class="hgroup flex">
+            <a href="http://bennettfeely.com/flexplorer">flexplorer</a>
+            <span class="toggle-controls" id="toggle-controls">&lsaquo;</span>
+        </hgroup>
+        <menu class="controls flex">
+            <div>
+                <code>flex:
+                    <span class="tip" data-tip="flex-grow"><input id="flex-grow-control" class="small" value="1" /></span>
+                    <span class="tip" data-tip="flex-shrink"><input id="flex-shrink-control" class="small" value="0" /></span>
+                    <span class="tip flex-basis-tip" data-tip="flex-basis (try 300px or 20%)"><input id="flex-basis-control" class="mid" value="auto" /></span>
+                </code>
+            </div>
+            <div>
+                <code># of flex items:
+                    <span id="count-increase" class="count-control small">+</span>
+                    <span id="count-decrease" class="count-control small">-</span>
+                </code>
+            </div>
+            <div>
+                <code>flex-direction:
+                    <select id="flex-direction-control">
+                      <option value="row">row</option>
+                      <option value="row-reverse">row-reverse</option>
+                      <option value="column">column</option>
+                      <option value="column-reverse">column-reverse</option>
+                    </select>
+                </code>
+            </div>
+            <div>
+                <code>flex-wrap:
+                    <select id="flex-wrap-control">
+                      <option value="wrap">wrap</option>
+                      <option value="wrap-reverse">wrap-reverse</option>
+                      <option value="nowrap">nowrap</option>
+                    </select>
+                </code>
+            </div>
+            <div>
+                <code class="tip justify-content-tip" data-tip="To see a change, set 'flex' property to something like 'flex: 0 1 auto'">justify-content:
+                    <select id="justify-content-control">
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                    </select>
+                </code>
+            </div>
+            <div>
+                <code class="twitter">
+                    <a href="https://twitter.com/bennettfeely" class="twitter-follow-button" data-show-count="false">Follow @bennettfeely</a>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="Flexplorer: the CSS3 Flexible box layout explorer" data-via="bennettfeely">Tweet</a>
+                    <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    </script>
+                </code>
+            </div>
+        </menu>
+    </aside>
+
+    <!-- Fail message -->
+    <div class="your-browser-sucks">
+        Well this is embarrassing...
+        <br>You're currently on a web browser that does not support the most recent version of the <a href="http://www.w3.org/TR/css3-flexbox/">CSS Flexible Box Model</a>.
+        <br>Upgrade your browser and have a nice day!
+
+        <label>Supports latest version of Flexbox <em>unprefixed</em>:</label>
+        <h1><a href="http://www.apple.com/safari/">Safari 7+</a></h1>
+        <h1><a href="http://ie.microsoft.com/testdrive/info/downloads/default.html">Internet Explorer 11</a></h1>
+        <h1><a href="https://www.google.com/intl/en/chrome/browser/">Chrome 29+</a></h1>
+        <h1><a href="http://www.opera.com/download/">Opera 12.1</a></h1>
+
+        <label>Supports latest version of Flexbox prefixed:</label>
+        <h2><a href="http://www.apple.com/safari/">Safari 6.1+ <small>prefixed</small></a></h2>
+        <h1><a href="https://www.google.com/intl/en/chrome/browser/">Chrome 21+</a></h1>
+
+        <label>Support for latest vesion of Flexbox coming soon!</label>
+        <h1><a class="no-support" href="http://www.mozilla.org/en-US/firefox/new/">Firefox 23+</a></h1>
+
+        <br>View full table of support for Flexbox on <a href="http://caniuse.com/#search=flexbox">Can I use...</a></label>
+    </div>
+
+    <!-- .demo -->
+    <figure id="demo" class="flex-container demo">
+        <div class="flex-item"><span contenteditable="true">Lorem ipsum</span></div>
+        <div class="flex-item"><span contenteditable="true">dolor</span></div>
+        <div class="flex-item"><span contenteditable="true">sit</span></div>
+        <div class="flex-item"><span contenteditable="true">amet</span></div>
+        <div class="flex-item"><span contenteditable="true">consectetur</span></div>
+        <div class="flex-item"><span contenteditable="true">adipiscing elit</span></div>
+        <div class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div class="flex-item"><span contenteditable="true">enim</span></div>
+        <div class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div class="flex-item"><span contenteditable="true">volutpat eget</span></div>
+        <div class="flex-item"><span contenteditable="true">aliquam</span></div>
+        <div class="flex-item"><span contenteditable="true">nec</span></div>
+        <div class="flex-item"><span contenteditable="true">accumsan rutrum</span></div>
+        <div class="flex-item"><span contenteditable="true">bacon</span></div>
+        <div class="flex-item"><span contenteditable="true">maecenas</span></div>
+        <div class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div class="flex-item"><span contenteditable="true">voldermere</span></div>
+        <div class="flex-item"><span contenteditable="true">it</span></div>
+        <div class="flex-item"><span contenteditable="true">las</span></div>
+        <div class="flex-item"><span contenteditable="true">quid</span></div>
+        <div class="flex-item"><span contenteditable="true">tostidos</span></div>
+        <div class="flex-item"><span contenteditable="true">gray</span></div>
+    </figure>
+
+</section>
+
+<!-- Results-->
+<section class="results flex">
+
+<style data-noprefix class="demo-styles" id="demo_styles" contenteditable="true">.flex-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.flex-item {
+    -webkit-flex: 1 auto;
+    -moz-flex: 1 auto;
+    flex: 1 auto;
+}</style>
+
+    <!-- Resources -->
+    <div class="resources">
+        <h1>Flexbox support (March 2014):</h1>
+
+        <h2><a href="http://ie.microsoft.com/testdrive/info/downloads/default.html">IE 11+ <small>unprefixed</small></a></h2>
+        <h2><a href="https://www.google.com/intl/en/chrome/browser/">Chrome 29+ <small>unprefixed</small></a></h2>
+        <h2><a href="http://www.mozilla.org/en-US/firefox/new/">Firefox 28+ <small>unprefixed</small></a></h2>
+        <h2><a href="http://www.opera.com/download/">Opera 12.1+ <small>unprefixed</small></a></h2>
+        <h2><a href="http://www.apple.com/safari/">Safari 6.1+ <small>prefixed</small></a></h2>
+
+    </div>
+</section>
+
+
+<script src="js/flexplorer.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35724550-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<a style="display:none" href="https://plus.google.com/102233754358513450834?rel=author">Google</a>
+</body>
+</html>
