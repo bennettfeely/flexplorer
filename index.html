@@ -44,7 +44,30 @@ document:'regexp(".")'};a.selectors=[];a.atrules=[];var s=j.appendChild(document
                 </code>
             </div>
             <div>
+                <code>item <span id="selected-index"></span>:
+                    <span class="tip" data-tip="flex-grow"><input id="item-flex-grow-control" class="selected-item-field small" value="" data-prop="grow" /></span>
+                    <span class="tip" data-tip="flex-shrink"><input id="item-flex-shrink-control" class="selected-item-field small" value="" data-prop="shrink" /></span>
+                    <span class="tip flex-basis-tip" data-tip="flex-basis (try 300px or 20%)"><input id="item-flex-basis-control" class="selected-item-field mid" value="" data-prop="basis" /></span>
+                </code>
+                <code class="tip large-tip-bottom" data-tip="order of items is 0 by default">
+                order:
+                    <input id="item-order-control" class="selected-item-field small" value="" data-prop="order" />
+                </code>
+                <code class="tip large-tip-bottom" data-tip="Equivalent of align-items per item" >
+                align-self:
+                    <select id="item-align-self-control" class="selected-item-field" data-prop="align">
+                      <option value="">auto</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                      <option value="stretch">stretch</option>
+                    </select>
+                </code>
+            </div>
+            <div>
                 <code># of flex items:
+                    <input id="count" class="small" maxlength="3">
                     <span id="count-increase" class="count-control small">+</span>
                     <span id="count-decrease" class="count-control small">-</span>
                 </code>
@@ -69,13 +92,36 @@ document:'regexp(".")'};a.selectors=[];a.atrules=[];var s=j.appendChild(document
                 </code>
             </div>
             <div>
-                <code class="tip justify-content-tip" data-tip="To see a change, set 'flex' property to something like 'flex: 0 1 auto'">justify-content:
+                <code class="tip large-tip" data-tip="To see a change, set 'flex' property to something like 'flex: 0 1 auto'">justify-content:
                     <select id="justify-content-control">
                       <option value="flex-start">flex-start</option>
                       <option value="flex-end">flex-end</option>
                       <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                      <option value="stretch">stretch</option>
+                    </select>
+                </code>
+            </div>
+            <div>
+                <code class="">align-items:
+                    <select id="align-items-control">
+                      <option value="stretch">stretch</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                    </select>
+                </code>
+            </div>
+            <div>
+                <code class="tip large-tip" data-tip="Only works when wrapping on several lines">align-content:
+                    <select id="align-content-control">
+                      <option value="stretch">stretch</option>
                       <option value="space-between">space-between</option>
                       <option value="space-around">space-around</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
                     </select>
                 </code>
             </div>
@@ -115,28 +161,28 @@ document:'regexp(".")'};a.selectors=[];a.atrules=[];var s=j.appendChild(document
 
     <!-- .demo -->
     <figure id="demo" class="flex-container demo">
-        <div class="flex-item"><span contenteditable="true">Lorem ipsum</span></div>
-        <div class="flex-item"><span contenteditable="true">dolor</span></div>
-        <div class="flex-item"><span contenteditable="true">sit</span></div>
-        <div class="flex-item"><span contenteditable="true">amet</span></div>
-        <div class="flex-item"><span contenteditable="true">consectetur</span></div>
-        <div class="flex-item"><span contenteditable="true">adipiscing elit</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">enim</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">volutpat eget</span></div>
-        <div class="flex-item"><span contenteditable="true">aliquam</span></div>
-        <div class="flex-item"><span contenteditable="true">nec</span></div>
-        <div class="flex-item"><span contenteditable="true">accumsan rutrum</span></div>
-        <div class="flex-item"><span contenteditable="true">bacon</span></div>
-        <div class="flex-item"><span contenteditable="true">maecenas</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">voldermere</span></div>
-        <div class="flex-item"><span contenteditable="true">it</span></div>
-        <div class="flex-item"><span contenteditable="true">las</span></div>
-        <div class="flex-item"><span contenteditable="true">quid</span></div>
-        <div class="flex-item"><span contenteditable="true">tostidos</span></div>
-        <div class="flex-item"><span contenteditable="true">gray</span></div>
+        <div id="item-1" class="flex-item"><span contenteditable="true">Lorem ipsum</span></div>
+        <div id="item-2" class="flex-item"><span contenteditable="true">dolor</span></div>
+        <div id="item-3" class="flex-item"><span contenteditable="true">sit</span></div>
+        <div id="item-4" class="flex-item"><span contenteditable="true">amet</span></div>
+        <div id="item-5" class="flex-item"><span contenteditable="true">consectetur</span></div>
+        <div id="item-6" class="flex-item"><span contenteditable="true">adipiscing elit</span></div>
+        <div id="item-7" class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div id="item-8" class="flex-item"><span contenteditable="true">enim</span></div>
+        <div id="item-9" class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div id="item-10" class="flex-item"><span contenteditable="true">volutpat eget</span></div>
+        <div id="item-11" class="flex-item"><span contenteditable="true">aliquam</span></div>
+        <div id="item-12" class="flex-item"><span contenteditable="true">nec</span></div>
+        <div id="item-13" class="flex-item"><span contenteditable="true">accumsan rutrum</span></div>
+        <div id="item-14" class="flex-item"><span contenteditable="true">bacon</span></div>
+        <div id="item-15" class="flex-item"><span contenteditable="true">maecenas</span></div>
+        <div id="item-16" class="flex-item"><span contenteditable="true">nunc</span></div>
+        <div id="item-17" class="flex-item"><span contenteditable="true">voldermere</span></div>
+        <div id="item-18" class="flex-item"><span contenteditable="true">it</span></div>
+        <div id="item-19" class="flex-item"><span contenteditable="true">las</span></div>
+        <div id="item-20" class="flex-item"><span contenteditable="true">quid</span></div>
+        <div id="item-21" class="flex-item"><span contenteditable="true">tostidos</span></div>
+        <div id="item-22" class="flex-item"><span contenteditable="true">gray</span></div>
     </figure>
 
 </section>

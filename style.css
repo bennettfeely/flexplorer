@@ -56,6 +56,7 @@
     .your-browser-sucks { display:none; }
     .demo { flex:1; padding:.5rem;  }
     .flex-item { background:#ddd; border-radius:.25rem; }
+    .flex-item.selected { box-shadow: inset 0px 0px 7rem #777; }
 
     .flex-container { overflow: auto; }
 
@@ -87,11 +88,14 @@
 
 /* Controls (menu.controls) ================================================= */
     .controls { flex:1; }
-    .controls { flex-direction:column; }
-    .controls div {
+    .controls {
+        flex-direction:column;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+    .controls > div {
         justify-content:flex-end;
-        flex:1;
-        width:100%;
+        flex-grow:1;
         padding:1rem;
         border-top:1px solid #e1e1e1;
         border-right:1px solid #e1e1e1;
@@ -110,6 +114,7 @@
         font-size:1rem;
         transition:opacity .5s;
     }
+    .controls code + code { padding-top:1rem; }
         .minimized .controls code { opacity:.2; pointer-events:none; }
 
 
@@ -134,12 +139,13 @@
     .count-control:active { transition:0; background:#ffb; }
 
 
-    .tip { position:relative; z-index:500; }
+    .tip { position:relative; }
     .tip:hover:before, .tip:hover:after {
         display:block;
         position:absolute;
         background:#555;
         text-align:center;
+        z-index: 1000;
     }
 
     .tip:hover:before {
@@ -155,23 +161,36 @@
         content:attr(data-tip);
         color:whitesmoke;
         top:31px;
-        width:90px;
+        left:0;
+        width:110px;
         font-size:14px;
         padding:10px;
         line-height:1.36;
+        box-sizing: border-box;
     }
 
-    .justify-content-tip:hover:before {
+    .large-tip:hover:before {
         top:-11px;
         left:60px;
     }
 
-    .justify-content-tip:hover:after {
+    .large-tip:hover:after {
         top:-65px;
         width:300px;
     }
+    .large-tip-bottom:hover:before {
+        top: auto;
+        bottom:-11px;
+        left:60px;
+    }
 
-    .flex-basis-tip:hover:after { width:260px; }
+    .large-tip-bottom:hover:after {
+        top: auto;
+        bottom:-46px;
+        width:300px;
+    }
+
+    .flex-basis-tip:hover:after { width:260px;left: -150px; }
 
 
 
@@ -250,9 +269,3 @@
 
     .no-flexbox .your-browser-sucks { display:block; padding:2rem; font-size:1.1rem; line-height:1.6; }
     .your-browser-sucks label { display:block; padding-top:2rem; font-size:1rem; }
-
-
-
-
-
-
